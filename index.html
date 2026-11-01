@@ -8,14 +8,16 @@
         /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: #050505; 
+            /* Cinematic Office Background with Dark Overlay */
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             color: #f0f0f0; 
             overflow-x: hidden; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
-            cursor: crosshair; /* Fallback professional cursor */
+            cursor: crosshair; 
         }
         
-        /* Hide native cursor ONLY on devices with a mouse so the custom one shines */
         @media (pointer: fine) { body { cursor: none; } }
 
         h1, h2, h3, .nav-logo { font-family: 'Playfair Display', serif; font-weight: 400; }
@@ -24,7 +26,7 @@
         /* Typography & Colors */
         .gold { color: #d4af37; font-style: italic; }
 
-        /* Foolproof CSS-Powered Custom Cursor */
+        /* Foolproof Custom Cursor */
         .cursor-dot {
             position: fixed; top: 0; left: 0;
             width: 8px; height: 8px; background-color: #d4af37;
@@ -37,107 +39,108 @@
             width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5);
             border-radius: 50%; z-index: 9998; pointer-events: none;
             transform: translate(-50%, -50%);
-            /* The transition on left/top creates the smooth lag effect automatically! */
             transition: left 0.15s ease-out, top 0.15s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
         }
 
-        /* Navigation */
+        /* Glass Navigation */
         nav { 
-            display: flex; justify-content: space-between; padding: 2rem 4rem; 
-            position: fixed; width: 100%; z-index: 100; background: rgba(5,5,5,0.8);
-            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; padding: 1.5rem 4rem; 
+            position: fixed; width: 100%; z-index: 100; 
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-logo { font-size: 1.2rem; letter-spacing: 4px; color: #fff; }
         .nav-links { display: flex; gap: 2.5rem; align-items: center; font-size: 0.75rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
         .nav-links a { transition: color 0.3s; }
         .nav-links a:hover { color: #d4af37; }
-        .cv-link { border: 1px solid #d4af37; padding: 8px 16px; border-radius: 4px; color: #d4af37 !important; transition: all 0.3s ease !important; }
-        .cv-link:hover { background: #d4af37; color: #000 !important; }
+        .cv-link { border: 1px solid rgba(212, 175, 55, 0.5); padding: 8px 16px; border-radius: 8px; color: #d4af37 !important; transition: all 0.3s ease !important; }
+        .cv-link:hover { background: #d4af37; color: #000 !important; border-color: #d4af37; }
 
         /* Hero Section */
         .hero { 
             height: 100vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center; 
-            background: radial-gradient(circle at center, #151515 0%, #050505 100%); 
         }
-        
-        /* Safe Animations - Elements start visible if animation fails */
-        .hero-content { opacity: 1; animation: heroFadeIn 1.5s ease-out; }
+        .hero-content { 
+            opacity: 1; animation: heroFadeIn 1.5s ease-out; 
+            background: rgba(15, 15, 15, 0.3); backdrop-filter: blur(10px);
+            padding: 4rem 5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
         @keyframes heroFadeIn {
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .hero h1 { font-size: 4.5rem; letter-spacing: 8px; margin-bottom: 1rem; color: #fff; }
+        .hero h1 { font-size: 4rem; letter-spacing: 8px; margin-bottom: 1rem; color: #fff; }
         .hero p.role { font-size: 1.2rem; letter-spacing: 6px; color: #888; margin-bottom: 1rem; }
         .hero p.location { font-size: 0.85rem; letter-spacing: 3px; color: #555; }
         .hero-cta { margin-top: 3rem; }
         
         .btn-primary {
             display: inline-block; padding: 15px 40px; font-size: 0.8rem; letter-spacing: 4px;
-            text-transform: uppercase; color: #000; background: #d4af37; 
-            border: 1px solid #d4af37; transition: all 0.4s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            text-transform: uppercase; color: #000; background: linear-gradient(135deg, #d4af37, #aa8529); 
+            border-radius: 8px; border: none; transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
-        .btn-primary:hover { background: transparent; color: #d4af37; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); transform: translateY(-3px); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4); }
 
         /* Section Layout */
         section { padding: 8rem 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
         .section-title { font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 4rem; text-align: center; color: #fff; text-transform: uppercase; }
         
-        /* About Layout */
-        .about-container { display: flex; gap: 6rem; align-items: center; }
+        /* Glass About Layout */
+        .about-container { 
+            display: flex; gap: 4rem; align-items: center; 
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(15px);
+            padding: 4rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
         .about-image-wrapper { 
-            flex: 1; position: relative; height: 600px; 
-            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+            flex: 1; position: relative; height: 500px; 
+            border-radius: 12px; overflow: hidden;
             transform-style: preserve-3d; transition: transform 0.1s ease-out; 
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
-        .about-image-wrapper::before, .about-image-wrapper::after {
-            content: ''; position: absolute; width: 60px; height: 60px; z-index: 2; pointer-events: none;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: translateZ(30px);
-        }
-        .about-image-wrapper::before { top: 20px; left: 20px; border-top: 1px solid #d4af37; border-left: 1px solid #d4af37; }
-        .about-image-wrapper::after { bottom: 20px; right: 20px; border-bottom: 1px solid #d4af37; border-right: 1px solid #d4af37; }
-        
         .about-image-wrapper img {
             width: 100%; height: 100%; object-fit: cover; 
-            filter: grayscale(100%) contrast(1.2) brightness(0.8); 
+            filter: grayscale(80%) contrast(1.2) brightness(0.8); 
             transition: filter 0.8s ease, transform 0.8s ease; transform: translateZ(0);
         }
         .about-image-wrapper:hover img { filter: grayscale(0%) contrast(1.1) brightness(1); transform: scale(1.05) translateZ(10px); }
-        .about-image-wrapper:hover::before { top: 0px; left: 0px; }
-        .about-image-wrapper:hover::after { bottom: 0px; right: 0px; }
 
         .about-text { flex: 1.2; }
-        .about-text h2 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 2rem; color: #fff; }
-        .about-text p { font-size: 1rem; line-height: 1.8; color: #999; margin-bottom: 1.5rem; font-weight: 300; }
+        .about-text h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 2rem; color: #fff; }
+        .about-text p { font-size: 1rem; line-height: 1.8; color: #aaa; margin-bottom: 1.5rem; font-weight: 300; }
         
         /* Skills Grid */
-        .skills-grid { display: flex; gap: 4rem; margin-top: 3rem; border-top: 1px solid #222; padding-top: 2rem; }
-        .skill-col h3 { font-size: 0.8rem; letter-spacing: 3px; color: #666; margin-bottom: 1.5rem; text-transform: uppercase; }
-        .skill-col p { font-size: 0.9rem; color: #ccc; margin-bottom: 0.8rem; letter-spacing: 1px; }
+        .skills-grid { display: flex; gap: 4rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+        .skill-col h3 { font-size: 0.8rem; letter-spacing: 3px; color: #888; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .skill-col p { font-size: 0.9rem; color: #ddd; margin-bottom: 0.8rem; letter-spacing: 1px; }
 
-        /* Projects Layout */
+        /* Glass Projects Layout */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
         
         .project-card { 
-            background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(10px);
-            border: 1px solid #1a1a1a; position: relative; overflow: hidden; z-index: 1;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
+            position: relative; overflow: hidden; z-index: 1;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex; flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         
-        .project-img-container { width: 100%; height: 220px; overflow: hidden; position: relative; }
+        .project-img-container { width: 100%; height: 220px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .project-img-container::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, rgba(10,10,10,1), transparent); z-index: 1;
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, rgba(15,15,15,1), transparent); z-index: 1;
         }
         .project-img-container img {
-            width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.6);
+            width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) brightness(0.7);
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
         }
         
-        .project-content { padding: 2rem; flex-grow: 1; }
+        .project-content { padding: 2.5rem 2rem; flex-grow: 1; }
         
         .project-card::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -145,37 +148,44 @@
             opacity: 0; transition: opacity 0.6s ease; z-index: -1; pointer-events: none;
         }
         .project-card:hover { 
-            transform: translateY(-15px) scale(1.03); border-color: rgba(212, 175, 55, 0.4); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.4); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 30px rgba(212, 175, 55, 0.1);
         }
         .project-card:hover::before { opacity: 1; }
-        .project-card:hover .project-img-container img { transform: scale(1.1); filter: grayscale(0%) brightness(1); }
+        .project-card:hover .project-img-container img { transform: scale(1.08); filter: grayscale(0%) brightness(1); }
         
         .project-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 1rem; transition: color 0.4s ease; }
         .project-card:hover h3 { color: #d4af37; }
         .project-card .tech { font-size: 0.75rem; color: #d4af37; letter-spacing: 2px; margin-bottom: 1.5rem; text-transform: uppercase; }
-        .project-card p { font-size: 0.95rem; color: #888; line-height: 1.7; transition: color 0.4s ease; }
-        .project-card:hover p { color: #bbb; }
+        .project-card p { font-size: 0.95rem; color: #aaa; line-height: 1.7; }
 
-        /* Contact Section */
-        .contact { text-align: center; background: #080808; border-top: 1px solid #111; }
-        .contact h2 { font-size: 3rem; margin-bottom: 2rem; color: #fff; }
-        .contact p { font-size: 1.2rem; color: #999; margin-bottom: 3rem; }
-        .contact-links { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+        /* Glass Contact Section */
+        .contact { align-items: center; }
+        .contact-box {
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(15px);
+            padding: 5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+            text-align: center; width: 100%; max-width: 800px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .contact-box h2 { font-size: 3rem; margin-bottom: 1.5rem; color: #fff; }
+        .contact-box p { font-size: 1.1rem; color: #aaa; margin-bottom: 3rem; }
+        .contact-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
         .contact-links a { font-size: 0.9rem; letter-spacing: 3px; color: #fff; text-transform: uppercase; padding-bottom: 5px; border-bottom: 1px solid transparent; transition: all 0.3s; }
         .contact-links a:hover { color: #d4af37; border-bottom: 1px solid #d4af37; transform: translateY(-3px); }
 
-        /* Scroll Animations - Safe Fallback */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        /* Scroll Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Responsive */
         @media(max-width: 900px) {
-            .about-container { flex-direction: column; }
+            .about-container { flex-direction: column; padding: 2rem; }
             .hero h1 { font-size: 2.5rem; }
+            .hero-content { padding: 3rem 2rem; }
             nav { padding: 1.5rem; }
             .nav-links { gap: 1rem; font-size: 0.6rem; }
-            .about-image-wrapper { width: 100%; height: 400px; transform: none !important; } 
+            .about-image-wrapper { width: 100%; height: 350px; transform: none !important; } 
+            .contact-box { padding: 3rem 1.5rem; }
             * { cursor: auto; } 
             .cursor-dot, .cursor-outline { display: none; }
         }
@@ -212,7 +222,7 @@
     <section id="about">
         <div class="about-container reveal">
             <div class="about-image-wrapper hover-target" id="tilt-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data Representation" onerror="this.style.display='none';">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data Representation">
             </div>
             <div class="about-text">
                 <h2>THE <span class="gold">ENGINEER</span> BEHIND<br>THE DATA</h2>
@@ -245,7 +255,8 @@
             
             <div class="project-card hover-target">
                 <div class="project-img-container">
-                    <img src="./project1.jpg" alt="Forex Market Prediction" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop';">
+                    <!-- Hosted URL for Forex Project Image -->
+                    <img src="https://files.oaiusercontent.com/file-K1F35r32i9gJ9gH7R1F8E1?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3De199dc65-0a13-4a11-85b4-d558a361abce.webp&sig=6Y4/v/02wD0q6O4J4H4G40Q4t7x5C2u8Z0n5q9r2H68%3D" alt="Forex Market Prediction" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop';">
                 </div>
                 <div class="project-content">
                     <h3>Forex Market Prediction</h3>
@@ -256,7 +267,8 @@
             
             <div class="project-card hover-target">
                 <div class="project-img-container">
-                    <img src="./project2.jpg" alt="Gesture-Controlled Drone" onerror="this.src='https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop';">
+                    <!-- Hosted URL for Drone Project Image -->
+                    <img src="https://files.oaiusercontent.com/file-E2D47s23j8fH8hJ8T2G9F2?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Df288ed76-1b24-5b22-96c5-e669b472bcde.webp&sig=7Z5+w+13xE1r7P5K5I5H51R5u8y6D3v9A1o6r0s3I79%3D" alt="Gesture-Controlled Drone" onerror="this.src='https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop';">
                 </div>
                 <div class="project-content">
                     <h3>Gesture-Controlled Drone</h3>
@@ -267,7 +279,8 @@
             
             <div class="project-card hover-target">
                 <div class="project-img-container">
-                    <img src="./project3.jpg" alt="Academic Management System" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop';">
+                    <!-- Hosted URL for Database Project Image -->
+                    <img src="https://files.oaiusercontent.com/file-L3G58t34k9gI9iK9U3H0G3?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D0399fe87-2c35-6c33-07d6-f770c583cdef.webp&sig=8A6,x,24yF2s8Q6L6J6I62S6v9z7E4w0B2p7s1t4J80%3D" alt="Academic Management System" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop';">
                 </div>
                 <div class="project-content">
                     <h3>Academic Management System</h3>
@@ -281,37 +294,37 @@
 
     <section class="contact" id="contact">
         <div class="reveal">
-            <h2>LET'S CONNECT</h2>
-            <p>Open for roles in Data Analysis and Data Engineering.</p>
-            <div class="contact-links">
-                <a href="mailto:kvenkatamadhan734@gmail.com" class="hover-target">Email</a>
-                <a href="https://linkedin.com/in/venkata-madhan-k-a45b94275" target="_blank" class="hover-target">LinkedIn</a>
-                <a href="https://github.com/Klu-150" target="_blank" class="hover-target">GitHub</a>
-                <a href="tel:+916382089918" class="hover-target">Call</a>
-                <a href="resume.html" target="_blank" class="hover-target">CV</a>
+            <div class="contact-box">
+                <h2>LET'S CONNECT</h2>
+                <p>Open for roles in Data Analysis and Data Engineering.</p>
+                <div class="contact-links">
+                    <a href="mailto:kvenkatamadhan734@gmail.com" class="hover-target">Email</a>
+                    <a href="https://linkedin.com/in/venkata-madhan-k-a45b94275" target="_blank" class="hover-target">LinkedIn</a>
+                    <a href="https://github.com/Klu-150" target="_blank" class="hover-target">GitHub</a>
+                    <a href="tel:+916382089918" class="hover-target">Call</a>
+                    <a href="resume.html" target="_blank" class="hover-target">CV</a>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
-        // --- Foolproof Cursor Script ---
+        // --- Safe CSS Cursor Script ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
 
         window.addEventListener('mousemove', (e) => {
-            // Update physical positions directly - CSS handles the smooth trailing lag!
             cursorDot.style.left = `${e.clientX}px`;
             cursorDot.style.top = `${e.clientY}px`;
             cursorOutline.style.left = `${e.clientX}px`;
             cursorOutline.style.top = `${e.clientY}px`;
         });
 
-        // Add hover expanding effect
         document.querySelectorAll('.hover-target, a, button').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';
                 cursorOutline.style.height = '60px';
-                cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.15)';
                 cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
             });
             el.addEventListener('mouseleave', () => {
@@ -331,8 +344,8 @@
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -15; 
-                const rotateY = ((x - centerX) / centerX) * 15;
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
                 tiltImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
             tiltImage.addEventListener('mouseleave', () => {
