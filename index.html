@@ -15,32 +15,13 @@
             color: #f0f0f0; 
             overflow-x: hidden; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
-            cursor: crosshair; 
         }
-        
-        @media (pointer: fine) { body { cursor: none; } }
 
         h1, h2, h3, .nav-logo { font-family: 'Playfair Display', serif; font-weight: 400; }
-        a, button { text-decoration: none; color: inherit; outline: none; cursor: none; }
+        a, button { text-decoration: none; color: inherit; outline: none; }
         
         /* Typography & Colors */
         .gold { color: #d4af37; font-style: italic; }
-
-        /* Foolproof Custom Cursor */
-        .cursor-dot {
-            position: fixed; top: 0; left: 0;
-            width: 8px; height: 8px; background-color: #d4af37;
-            border-radius: 50%; z-index: 9999; pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.2s ease, opacity 0.3s ease;
-        }
-        .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 50%; z-index: 9998; pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: left 0.15s ease-out, top 0.15s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
-        }
 
         /* Glass Navigation */
         nav { 
@@ -186,25 +167,19 @@
             .nav-links { gap: 1rem; font-size: 0.6rem; }
             .about-image-wrapper { width: 100%; height: 350px; transform: none !important; } 
             .contact-box { padding: 3rem 1.5rem; }
-            * { cursor: auto; } 
-            .cursor-dot, .cursor-outline { display: none; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
     <nav>
         <div class="nav-logo">PORTFOLIO.</div>
         <div class="nav-links">
-            <a href="#about" class="hover-target">About</a>
-            <a href="#projects" class="hover-target">Projects</a>
-            <a href="#contact" class="hover-target">Contact</a>
-            <a href="resume.html" class="hover-target cv-link" target="_blank">Resume</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="resume.html" class="cv-link" target="_blank">Resume</a>
         </div>
     </nav>
 
@@ -214,14 +189,14 @@
             <p class="role">JUNIOR DATA ANALYST / DATA ENGINEER</p>
             <p class="location">BASED IN INDIA</p>
             <div class="hero-cta">
-                <a href="resume.html" class="btn-primary hover-target" target="_blank">View My CV</a>
+                <a href="resume.html" class="btn-primary" target="_blank">View My CV</a>
             </div>
         </div>
     </section>
 
     <section id="about">
         <div class="about-container reveal">
-            <div class="about-image-wrapper hover-target" id="tilt-image">
+            <div class="about-image-wrapper" id="tilt-image">
                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data Representation">
             </div>
             <div class="about-text">
@@ -253,7 +228,7 @@
         <h2 class="section-title reveal">Featured Work</h2>
         <div class="projects-grid reveal">
             
-            <div class="project-card hover-target">
+            <div class="project-card">
                 <div class="project-img-container">
                     <!-- Hosted URL for Forex Project Image -->
                     <img src="https://files.oaiusercontent.com/file-K1F35r32i9gJ9gH7R1F8E1?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3De199dc65-0a13-4a11-85b4-d558a361abce.webp&sig=6Y4/v/02wD0q6O4J4H4G40Q4t7x5C2u8Z0n5q9r2H68%3D" alt="Forex Market Prediction" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop';">
@@ -265,7 +240,7 @@
                 </div>
             </div>
             
-            <div class="project-card hover-target">
+            <div class="project-card">
                 <div class="project-img-container">
                     <!-- Hosted URL for Drone Project Image -->
                     <img src="https://files.oaiusercontent.com/file-E2D47s23j8fH8hJ8T2G9F2?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Df288ed76-1b24-5b22-96c5-e669b472bcde.webp&sig=7Z5+w+13xE1r7P5K5I5H51R5u8y6D3v9A1o6r0s3I79%3D" alt="Gesture-Controlled Drone" onerror="this.src='https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop';">
@@ -277,7 +252,7 @@
                 </div>
             </div>
             
-            <div class="project-card hover-target">
+            <div class="project-card">
                 <div class="project-img-container">
                     <!-- Hosted URL for Database Project Image -->
                     <img src="https://files.oaiusercontent.com/file-L3G58t34k9gI9iK9U3H0G3?se=2024-11-20T17%3A46%3A36Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D0399fe87-2c35-6c33-07d6-f770c583cdef.webp&sig=8A6,x,24yF2s8Q6L6J6I62S6v9z7E4w0B2p7s1t4J80%3D" alt="Academic Management System" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop';">
@@ -298,43 +273,17 @@
                 <h2>LET'S CONNECT</h2>
                 <p>Open for roles in Data Analysis and Data Engineering.</p>
                 <div class="contact-links">
-                    <a href="mailto:kvenkatamadhan734@gmail.com" class="hover-target">Email</a>
-                    <a href="https://linkedin.com/in/venkata-madhan-k-a45b94275" target="_blank" class="hover-target">LinkedIn</a>
-                    <a href="https://github.com/Klu-150" target="_blank" class="hover-target">GitHub</a>
-                    <a href="tel:+916382089918" class="hover-target">Call</a>
-                    <a href="resume.html" target="_blank" class="hover-target">CV</a>
+                    <a href="mailto:kvenkatamadhan734@gmail.com">Email</a>
+                    <a href="https://linkedin.com/in/venkata-madhan-k-a45b94275" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/Klu-150" target="_blank">GitHub</a>
+                    <a href="tel:+916382089918">Call</a>
+                    <a href="resume.html" target="_blank">CV</a>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        // --- Safe CSS Cursor Script ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        window.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = `${e.clientX}px`;
-            cursorDot.style.top = `${e.clientY}px`;
-            cursorOutline.style.left = `${e.clientX}px`;
-            cursorOutline.style.top = `${e.clientY}px`;
-        });
-
-        document.querySelectorAll('.hover-target, a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.width = '60px';
-                cursorOutline.style.height = '60px';
-                cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.15)';
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.width = '40px';
-                cursorOutline.style.height = '40px';
-                cursorOutline.style.backgroundColor = 'transparent';
-                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-
         // --- Safe 3D Image Tilt ---
         const tiltImage = document.getElementById('tilt-image');
         if (tiltImage) {
