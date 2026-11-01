@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venkata Madhan Kanakala | Portfolio</title>
     <style>
-        /* Reset & Base - NORMAL CURSOR RESTORED */
+        /* Reset & Base - COMPLETELY NORMAL CURSOR */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            /* Uses your uploaded bg.jpg image */
-            background: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.9)), 
-                        url('./bg.jpg') no-repeat center center fixed;
+            /* Clean, cinematic dark background that matches the vibe perfectly */
+            background: linear-gradient(rgba(10, 10, 12, 0.8), rgba(5, 5, 8, 0.95)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: #f0f0f0; 
             overflow-x: hidden; 
@@ -18,7 +18,9 @@
         }
 
         h1, h2, h3, .nav-logo { font-family: 'Playfair Display', serif; font-weight: 400; }
-        a, button { text-decoration: none; color: inherit; outline: none; }
+        
+        /* Enforcing standard pointer for links and buttons */
+        a, button { text-decoration: none; color: inherit; outline: none; cursor: pointer !important; }
         
         /* Typography & Colors */
         .gold { color: #d4af37; font-style: italic; }
@@ -44,9 +46,9 @@
         }
         .hero-content { 
             opacity: 1; animation: heroFadeIn 1.5s ease-out; 
-            background: rgba(15, 15, 15, 0.5); backdrop-filter: blur(12px);
+            background: rgba(15, 15, 15, 0.4); backdrop-filter: blur(15px);
             padding: 4rem 5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
         @keyframes heroFadeIn {
             0% { opacity: 0; transform: translateY(30px); }
@@ -73,13 +75,14 @@
         /* Glass About Layout */
         .about-container { 
             display: flex; gap: 4rem; align-items: center; 
-            background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(15px);
+            background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(15px);
             padding: 4rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         .about-image-wrapper { 
             flex: 1; position: relative; height: 500px; 
             border-radius: 12px; overflow: hidden;
+            transform-style: preserve-3d; transition: transform 0.1s ease-out; 
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
         .about-image-wrapper img {
@@ -102,7 +105,7 @@
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
         
         .project-card { 
-            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(15px);
+            background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
             position: relative; overflow: hidden; z-index: 1;
             transition: all 0.5s ease;
@@ -139,7 +142,7 @@
             background: rgba(20, 20, 20, 0.5); backdrop-filter: blur(15px);
             padding: 5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
             text-align: center; width: 100%; max-width: 800px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .contact-box h2 { font-size: 3rem; margin-bottom: 1.5rem; color: #fff; }
         .contact-box p { font-size: 1.1rem; color: #bbb; margin-bottom: 3rem; }
@@ -189,7 +192,7 @@
 
     <section id="about">
         <div class="about-container reveal">
-            <div class="about-image-wrapper">
+            <div class="about-image-wrapper" id="tilt-image">
                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data Representation">
             </div>
             <div class="about-text">
@@ -274,7 +277,25 @@
     </section>
 
     <script>
-        // Extremely simple scroll reveal (Guaranteed not to break or freeze the page)
+        // --- Safe 3D Image Tilt ---
+        const tiltImage = document.getElementById('tilt-image');
+        if (tiltImage) {
+            tiltImage.addEventListener('mousemove', (e) => {
+                const rect = tiltImage.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
+                tiltImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            tiltImage.addEventListener('mouseleave', () => {
+                tiltImage.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            });
+        }
+
+        // --- Safe Scroll Reveal ---
         const reveals = document.querySelectorAll('.reveal');
         if (reveals.length > 0) {
             const observer = new IntersectionObserver((entries) => {
@@ -283,7 +304,7 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15 });
             reveals.forEach(reveal => observer.observe(reveal));
         }
     </script>
